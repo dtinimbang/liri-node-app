@@ -18,7 +18,7 @@ var client = new Twitter(keys.twitter);
 
 var array2 = process.argv[2];
 var array3 = process.argv[3]
-
+var argv = ""
 
 
 
@@ -41,7 +41,13 @@ var array3 = process.argv[3]
 			break;
 		
 		case "movie-this":
-			myMovie();
+		//	myMovie();
+			if(argv){
+				myMovie(argv);
+			}else{
+				var movie = array3;
+				myMovie(movie);
+			}
 			break;
 
 			case "do-what-it-says":
@@ -116,8 +122,8 @@ function mySpotify(song){
 }
 
 //OMDB________________________________________________________
-function myMovie(array2){
-	console.log(array2);
+function myMovie(movie){
+	console.log(movie);
 //var movie = process.argv[2];
 	//console.log("title: ", movie)
 	// Request via OMDB API
@@ -125,7 +131,7 @@ function myMovie(array2){
 	console.log("Movie request coming up!")
 	console.log("============================")
 
-	var requestURL = "http://www.omdbapi.com/?t=" + array2  + "&y=&plot=short&apikey=trilogy";
+	var requestURL = "http://www.omdbapi.com/?t=" + movie  + "&y=&plot=short&apikey=trilogy";
 	var movieObj = JSON.parse;
 	request(requestURL, function(error, response, body) {
 	  // If the request is successful (i.e. if the response status code is 200)
