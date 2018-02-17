@@ -93,18 +93,18 @@ function mySpotify(song){
     }
 
     var song = data.tracks.items[0];
-    console.log("===================-Artist===================");
+    console.log("===================-Artist========================");
     for(i=0; i<song.artists.length; i++){
     	console.log(song.artists[i].name);
     }
 
-    console.log("===================Song Name===================");
+    console.log("===================Song Name======================");
     console.log(song.name);
 
 	console.log("===================Preview Link===================");
     console.log(song.preview_url);
 
-    console.log("===================Album===================");
+    console.log("===================Album==========================");
     console.log(song.album.name);
 
 	});
@@ -112,21 +112,27 @@ function mySpotify(song){
 }
 
 //OMDB________________________________________________________
-function myMovie(movie){
-var movie = process.argv[2];
-	console.log("title: ", movie)
+function myMovie(a){
+	console.log(a);
+//var movie = process.argv[2];
+	//console.log("title: ", movie)
 	// Request via OMDB API
-	request("http://www.omdbapi.com/?t=" + movie  + "&y=&plot=short&apikey=trilogy", function(error, response, body) {
+	console.log("============================")
+	console.log("Movie request coming up!")
+	console.log("============================")
+
+	var requestURL = "http://www.omdbapi.com/?t=" + a  + "&y=&plot=short&apikey=trilogy";
+	var movieObj = JSON.parse;
+	request(requestURL, function(error, response, body) {
 	  // If the request is successful (i.e. if the response status code is 200)
 	  if (!error && response.statusCode === 200) {
 		// Parse the body of the site and recover just the imdbRating
-		// (Note: The syntax below for parsing isn't obvious. Just spend a few moments dissecting it).
-		console.log("Direcor: " + JSON.parse(body).Director +
-			"\nYear: " + JSON.parse(body).Year +
-			"\nActors: " + JSON.parse(body).Actors +
-			"\nPlot: " + JSON.parse(body).Plot);
-	  }else{
-		  console.log("try another movie");
+		
+		console.log("title: " + movieObj(body).Title);
+		console.log("Direcor: " + movieObj(body).Director);
+		console.log("Year: " + movieObj(body).Year);
+		console.log("Actors: " + movieObj(body).Actors);
+		console.log("Plot: " + movieObj(body).Plot);
 	  }
 	});
 }
