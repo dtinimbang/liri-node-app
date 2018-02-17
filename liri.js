@@ -150,7 +150,6 @@ function myRandom(){
 	//Runs `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
 	fs.readFile("random.txt", 'utf8', function(err, data){
 
-		// console.log(data);
 
 		//Creating an array from a string with split()
 		//Every comma, push the element into the array
