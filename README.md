@@ -1,5 +1,5 @@
 # liri-node-app
-
+All code used require to access NPM
 # Liri-Twitter
 
 This allows the user to call my last 20 tweets.  I did this by grabbing the necessary keys and placing them in the .env folder.
@@ -10,6 +10,13 @@ To retrieve the titter data you must type
 
 node liri.js my-tweets
 
+Example below:
+node liri.js my-tweets
+
+Result:
+
+@DonMikeyBang Tweet 13 created on: Thu Feb 15 04:44:16 +0000 2018
+Tweet 13 text: my goal for 2018 is a cartwheel
 
 # Twitter API keys
 
@@ -34,8 +41,50 @@ my spotify code is listed below which allows me to acess the API.
   secret: 'cd329c9606454a2cac1de8375fad55d0'
 }); -->
 
+Call spotify by using
+node liri.js spotify-this-song <song name>
+
+Example:
+node liri.js spotify-this-song thriller
+
+Result:
+
+===================-Artist========================
+Michael Jackson
+===================Song Name======================
+Billie Jean
+===================Preview Link===================
+https://p.scdn.co/mp3-preview/4eb779428d40d579f14d12a9daf98fc66c7d0be4?cid=0d499989c18f44bbb8db45603dd8d54c
+===================Album==========================
+Thriller 25 Super Deluxe Edition
+
+
+===============================================
+# Liri-Movie
+
+   This will output the following information to your terminal/bash window:
+
+     ```
+       * Title of the movie.
+       * Year the movie came out.
+       * IMDB Rating of the movie.
+       * Rotten Tomatoes Rating of the movie.
+       * Country where the movie was produced.
+       * Language of the movie.
+       * Plot of the movie.
+       * Actors in the movie.
+    
+     ```
 
 
 
+===============================================
+# Liri-Random
 
-var Spotify = require('node-spotify-api');
+Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+
+Example:
+node liri.js do-what-it-says
+
+Result:
+You requested to <spotify-this-song> with "I Want it That Way"
