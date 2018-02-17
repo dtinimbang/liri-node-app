@@ -16,8 +16,8 @@ var client = new Twitter(keys.twitter);
 
 
 
-var a = process.argv[2];
-var b = process.argv[3]
+var array2 = process.argv[2];
+var array3 = process.argv[3]
 
 
 
@@ -28,20 +28,24 @@ var b = process.argv[3]
 
 // function SwitchCase(a,b){
 
-    switch(a){
+    switch(array2){
 		case 'my-tweets':
             myTweets();
             break;
 
 		case "spotify-this-song":
-		if(b === undefined){
-			b === defaultSong;
+		if(array3 === undefined){
+			array3 === defaultSong;
 		}
-            mySpotify(b);
+            mySpotify(array3);
 			break;
 		
 		case "movie-this":
 			myMovie();
+			break;
+
+			case "do-what-it-says":
+			myRandom();
 			break;
         
     }
@@ -112,8 +116,8 @@ function mySpotify(song){
 }
 
 //OMDB________________________________________________________
-function myMovie(a){
-	console.log(a);
+function myMovie(array2){
+	console.log(array2);
 //var movie = process.argv[2];
 	//console.log("title: ", movie)
 	// Request via OMDB API
@@ -121,7 +125,7 @@ function myMovie(a){
 	console.log("Movie request coming up!")
 	console.log("============================")
 
-	var requestURL = "http://www.omdbapi.com/?t=" + a  + "&y=&plot=short&apikey=trilogy";
+	var requestURL = "http://www.omdbapi.com/?t=" + array2  + "&y=&plot=short&apikey=trilogy";
 	var movieObj = JSON.parse;
 	request(requestURL, function(error, response, body) {
 	  // If the request is successful (i.e. if the response status code is 200)
@@ -138,7 +142,27 @@ function myMovie(a){
 }
 
 
+//Random________________________________________________________
 
 
+function myRandom(){
+	//LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
+	//Runs `spotify-this-song` for "I Want it That Way," as follows the text in `random.txt`.
+	fs.readFile("random.txt", 'utf8', function(err, data){
 
+		// console.log(data);
 
+		//Creating an array from a string with split()
+		//Every comma, push the element into the array
+		var dataArr = data.split(',');
+
+		// console.log(dataArr);
+
+		var data0 = dataArr[0];
+		var data1 = dataArr[1];
+
+		console.log("You requested to " + "<" + data0 + "> with " + data1);
+		
+
+	});
+}
