@@ -10,7 +10,7 @@ var spotify = new Spotify({
   secret: 'cd329c9606454a2cac1de8375fad55d0'
 });
 
-var defaultSong = "Ace of Base";
+var defaultSong = "The sign Ace of Base";
 var request = require('request');
 var client = new Twitter(keys.twitter);
 
@@ -34,8 +34,10 @@ var argv = ""
             break;
 
 		case "spotify-this-song":
+		//console.log(array3);
 		if(array3 === undefined){
-			array3 === defaultSong;
+			array3 = defaultSong;
+			//console.log("this works")
 		}
             mySpotify(array3);
 			break;
